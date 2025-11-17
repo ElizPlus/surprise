@@ -1,0 +1,63 @@
+.memory-map {
+    height: 500px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    margin-bottom: 3rem;
+    overflow: hidden;
+}
+
+/* Стили для меток на карте */
+.memory-marker {
+    background: linear-gradient(45deg, #ff6b93, #ff8e53);
+    border: 3px solid white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.memory-marker:hover {
+    transform: scale(1.2);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+}
+
+/* Попап с фото */
+.memory-popup .leaflet-popup-content-wrapper {
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+.memory-popup .leaflet-popup-content {
+    margin: 20px;
+    text-align: center;
+}
+
+.memory-photo {
+    width: 200px;
+    height: 150px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 3px solid #ff6b93;
+}
+
+.memory-date {
+    color: #ff6b93;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.memory-description {
+    color: #5a3d5c;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}

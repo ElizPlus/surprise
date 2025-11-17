@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Секретная Страница 💫</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="secret-container">
+            <div id="password-section" class="password-section">
+                <h1>🔒 Секретное Послание</h1>
+                <p class="subtitle">Введи наш особенный код чтобы открыть послание...</p>
+                
+                <div class="password-input-container">
+                    <input type="password" id="password-input" placeholder="Введи код..." class="password-input">
+                    <button onclick="checkPassword()" class="password-btn">Открыть</button>
+                </div>
+                <p id="error-message" class="error-message"></p>
+            </div>
+
+            <div id="secret-message" class="secret-message hidden">
+                <h1>💖 Моё Секретное Послание</h1>
+                <div class="message-content">
+                    <p>Любимый мой,</p>
+                    <p>Этот маленький секрет только для тебя... [Тут будет твоё секретное сообщение]</p>
+                    <p>Ты - самое дорогое, что есть в моей жизни, и я бесконечно благодарна за каждый момент с тобой.</p>
+                    <p>Запомни эту дату: <strong>21.06.25</strong> - она особенная для нас! 💕</p>
+                    <p>С любовью, твоя [Твоё имя]</p>
+                </div>
+                <div class="secret-hearts">
+                    <span>💞</span>
+                    <span>💖</span>
+                    <span>💝</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/secret.js"></script>
+</body>
+</html>
