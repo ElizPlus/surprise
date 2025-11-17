@@ -96,3 +96,50 @@
 .pulse {
     animation: pulse 2s infinite;
 }
+
+/* Дополнительные анимации для новых эффектов */
+
+/* Анимация для навигационных кнопок */
+.navigation-buttons .nav-btn {
+    margin: 0.5rem;
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+}
+
+/* Анимация появления категорий пожеланий */
+.wish-category {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.wish-category:nth-child(1) { animation-delay: 0.1s; }
+.wish-category:nth-child(2) { animation-delay: 0.2s; }
+.wish-category:nth-child(3) { animation-delay: 0.3s; }
+.wish-category:nth-child(4) { animation-delay: 0.4s; }
+
+.final-wish {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Адаптивность для новых страниц */
+@media (max-width: 768px) {
+    .sexy-header h1 {
+        font-size: 2rem;
+    }
+    
+    .message-content {
+        padding: 1.5rem;
+    }
+    
+    .letter-section {
+        font-size: 1rem;
+    }
+    
+    .navigation-buttons {
+        flex-direction: column;
+    }
+    
+    .navigation-buttons .nav-btn {
+        min-width: auto;
+    }
+}
