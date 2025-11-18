@@ -1,10 +1,11 @@
 class SecretPage {
     constructor() {
-        this.correctPassword = "21.06.25";
+        this.correctPassword = "210625"; // Новый формат: ддммгг
         this.passwordSection = document.getElementById('password-section');
         this.secretMessage = document.getElementById('secret-message');
         this.passwordInput = document.getElementById('password-input');
         this.errorMessage = document.getElementById('error-message');
+        this.passwordBtn = document.getElementById('password-btn');
         
         this.setupEventListeners();
     }
@@ -15,6 +16,11 @@ class SecretPage {
             if (e.key === 'Enter') {
                 this.checkPassword();
             }
+        });
+
+        // Обработчик клика на кнопку
+        this.passwordBtn.addEventListener('click', () => {
+            this.checkPassword();
         });
 
         // Автофокус на поле ввода
@@ -35,9 +41,10 @@ class SecretPage {
         // Анимация скрытия поля ввода
         this.passwordSection.style.opacity = '0';
         this.passwordSection.style.transform = 'translateY(-20px)';
+        this.passwordSection.style.transition = 'all 0.5s ease';
         
         setTimeout(() => {
-            this.passwordSection.classList.add('hidden');
+            this.passwordSection.style.display = 'none';
             this.secretMessage.classList.remove('hidden');
             
             // Анимация появления секретного сообщения
@@ -58,7 +65,7 @@ class SecretPage {
     showError() {
         // Анимация ошибки
         this.passwordInput.style.animation = 'shake 0.5s ease-in-out';
-        this.errorMessage.textContent = 'Неверный код... Попробуй ещё раз 💕';
+        this.errorMessage.textContent = 'А давай ещё раз попробуешь? 😉';
         this.errorMessage.style.opacity = '1';
         
         // Очищаем поле ввода
@@ -79,13 +86,23 @@ const shakeAnimation = `
     25% { transform: translateX(-10px); }
     75% { transform: translateX(10px); }
 }
+
+.hidden {
+    display: none !important;
+}
 `;
 
 const styleSheet = document.createElement('style');
 styleSheet.textContent = shakeAnimation;
 document.head.appendChild(styleSheet);
 
-// Инициализируем секретную страницу
+// Инициализируем секретную страницу когда DOM загружен
 document.addEventListener('DOMContentLoaded', function() {
     new SecretPage();
 });
+
+// Также добавляем глобальную функцию для обратной совместимости
+function checkPassword() {
+    const secretPage = new SecretPage();
+    secretPage.checkPassword();
+}

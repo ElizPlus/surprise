@@ -353,6 +353,9 @@ body {
     font-size: 0.9rem;
     margin-top: 0.5rem;
     font-style: italic;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Адаптивность */
