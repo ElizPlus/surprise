@@ -334,6 +334,27 @@ body {
     display: none !important;
 }
 
+/* Навигация внизу страницы */
+.navigation-bottom {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid rgba(255,255,255,0.3);
+    text-align: center;
+}
+
+.navigation-bottom .nav-btn {
+    margin: 0.5rem;
+    display: inline-block;
+}
+
+/* Подсказка для пароля */
+.password-hint {
+    color: rgba(255,255,255,0.8);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
 /* Адаптивность */
 @media (max-width: 768px) {
     .main-title { font-size: 2.5rem; }
@@ -342,4 +363,15 @@ body {
     .reasons-grid { grid-template-columns: 1fr; }
     .password-input-container { flex-direction: column; }
     .password-input { width: 100%; }
+    
+    /* Адаптивность для навигации внизу */
+    .navigation-bottom {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .navigation-bottom .nav-btn {
+        margin: 0.2rem 0;
+    }
 }
