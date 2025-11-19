@@ -41,23 +41,49 @@
     text-align: center;
 }
 
-.memory-photo {
-    width: 200px;
-    height: 150px;
+/* Стили для фото в попапах */
+.memory-photo-container {
+    margin-bottom: 15px;
     border-radius: 10px;
-    object-fit: cover;
-    margin-bottom: 10px;
-    border: 3px solid #ff6b93;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-.memory-date {
-    color: #ff6b93;
+.memory-photo {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    border: 3px solid #ff6b93;
+    border-radius: 10px;
+}
+
+.memory-photo:hover {
+    transform: scale(1.05);
+}
+
+.memory-photo-placeholder {
+    background: linear-gradient(45deg, #ff6b93, #ff8e53);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 15px;
     font-weight: bold;
-    margin: 5px 0;
+}
+
+.memory-info {
+    padding: 0 10px;
+}
+
+.memory-info h3 {
+    color: #ff6b93;
+    margin-bottom: 5px;
+    font-size: 1.2rem;
 }
 
 .memory-description {
-    color: #5a3d5c;
+    color: #333;
     font-size: 0.9rem;
     line-height: 1.4;
 }

@@ -15,65 +15,88 @@ class MemoryMap {
             maxZoom: 18
         }).addTo(this.map);
 
-        // Добавляем метки значимых мест Новосибирска
+        // Добавляем метки значимых мест
         this.addMemoryMarkers();
     }
 
     addMemoryMarkers() {
         const memories = [
             {
-                coords: [55.030199, 82.920430],
-                title: "Центр Новосибирска",
-                description: "Сердце нашего города",
-                date: "Наше первое свидание",
-                photo: "images/photos/center.jpg"
+                coords: [54.978176, 82.917369],
+                title: "Cafe",
+                description: "The day of our meeting",
+                photo: "images/photos/cafe.jpg",
+                hasPhoto: true 
             },
             {
-                coords: [55.018184, 82.933952],
-                title: "Набережная Оби",
-                description: "Наши вечерние прогулки",
-                date: "Многие вечера",
-                photo: "images/photos/river.jpg"
+                coords: [55.006166, 82.939746],
+                title: "Ferris wheel",
+                description: "Our evening walks",
+                photo: "images/photos/coleso.jpg",
+                hasPhoto: true
             },
             {
-                coords: [55.040841, 82.895731],
-                title: "ПКиО им. Кирова",
-                description: "Место наших летних встреч",
-                date: "Лето 2024",
-                photo: "images/photos/park.jpg"
+                coords: [55.030214, 82.917245],
+                title: "Fry street food pub",
+                description: "Our fun versions of walking",
+                photo: "images/photos/fry.jpg",
+                hasPhoto: true
             },
             {
-                coords: [55.059563, 82.910324],
-                title: "Новосибирский зоопарк",
-                description: "Наше первое совместное посещение зоопарка",
-                date: "Весна 2024",
-                photo: "images/photos/zoo.jpg"
+                coords: [54.987163, 82.909922],
+                title: "KFC",
+                description: "The height of summer",
+                photo: "images/photos/kfc.jpg",
+                hasPhoto: true
             },
             {
-                coords: [55.028611, 82.921389],
-                title: "Театр Оперы и Балета",
-                description: "Первый культурный вечер вместе",
-                date: "Осень 2023",
-                photo: "images/photos/theater.jpg"
+                coords: [55.030812, 82.916918],
+                title: "Square 'Wings of Siberia'",
+                description: "Our fun versions of walking",
+                photo: "images/photos/squar.jpg",
+                hasPhoto: true
             },
             {
-                coords: [55.006111, 82.936667],
-                title: "Академгородок",
-                description: "Наши научные прогулки",
-                date: "Разные дни",
-                photo: "images/photos/academy.jpg"
+                coords: [54.988332, 82.903331],
+                title: "Pavilion",
+                description: "Our cute photo for the frame",
+                photo: "images/photos/nstu.jpg",
+                hasPhoto: true
             },
             {
-                coords: [55.016667, 82.950000],
-                title: "ТРЦ ",
-                description: "Наши киновечера и шоппинг",
-                date: "Частые визиты",
-                photo: "images/photos/mall.jpg"
+                coords: [54.972374, 82.903267],
+                title: "Street in the evening",
+                description: "Our fun versions of walking",
+                photo: "images/photos/kb.jpg",
+                hasPhoto: true
+            },
+            {
+                coords: [54.997563, 82.884696],
+                title: "Railway",
+                description: "Our amazing walk",
+                photo: "images/photos/jd.jpg",
+                hasPhoto: true
+            },
+            {
+                coords: [54.983947, 82.89439],
+                title: "Sushi",
+                description: "Our first date",
+                photo: "images/photos/date.jpg",
+                hasPhoto: true
+            },
+            {
+                coords: [54.980355, 82.895672],
+                title: "Shopping malls",
+                description: "The day before...",
+                photo: "images/photos/we.jpg",
+                hasPhoto: true
             }
         ];
 
         memories.forEach((memory, index) => {
-            this.addMarker(memory, index + 1);
+            if (memory.hasPhoto) { // добавляем только точки с фото
+                this.addMarker(memory, index + 1);
+            }
         });
     }
 
@@ -91,34 +114,42 @@ class MemoryMap {
             .addTo(this.map)
             .bindPopup(this.createPopupContent(memory), {
                 className: 'memory-popup',
-                maxWidth: 300
+                maxWidth: 400,
+                minWidth: 300
             });
 
         this.markers.push(marker);
     }
 
     createPopupContent(memory) {
+        // Проверяем, есть ли фото
+        const photoContent = memory.hasPhoto ? 
+            `<div class="memory-photo-container">
+                <img src="${memory.photo}" alt="${memory.title}" class="memory-photo" onerror="this.style.display='none'">
+            </div>` :
+            `<div class="memory-photo-placeholder">
+                📸 Фото скоро появится!
+            </div>`;
+
         return `
             <div class="memory-popup-content">
-                <div class="memory-photo-placeholder">
-                    📸 ${memory.photo.split('/').pop()}
+                ${photoContent}
+                <div class="memory-info">
+                    <h3>${memory.title}</h3>
+                    <p class="memory-description">${memory.description}</p>
                 </div>
-                <h3>${memory.title}</h3>
-                <div class="memory-date">${memory.date}</div>
-                <p class="memory-description">${memory.description}</p>
-                <small>Загрузи своё фото для этого места!</small>
             </div>
         `;
     }
 
-    // Метод для добавления новой метки (можно использовать позже)
-    addNewMemory(coords, title, description, date, photo) {
+    // Метод для добавления новой метки
+    addNewMemory(coords, title, description, photo) {
         const newMemory = {
             coords,
             title,
             description,
-            date,
-            photo
+            photo,
+            hasPhoto: true
         };
         this.addMarker(newMemory, this.markers.length + 1);
     }
@@ -127,31 +158,4 @@ class MemoryMap {
 // Инициализируем карту когда страница загрузится
 document.addEventListener('DOMContentLoaded', function() {
     new MemoryMap();
-    
-    // Добавляем обработчики для галереи фото
-    initPhotoGallery();
 });
-
-function initPhotoGallery() {
-    const photoPlaceholders = document.querySelectorAll('.photo-placeholder');
-    
-    photoPlaceholders.forEach(placeholder => {
-        placeholder.addEventListener('click', function() {
-            const photoId = this.getAttribute('data-id');
-            alert(`Место для фото ${photoId}! Загрузи своё фото в папку images/photos/ и обнови страницу.`);
-        });
-        
-        // Добавляем анимацию при наведении
-        placeholder.addEventListener('mouseenter', function() {
-            this.style.background = 'linear-gradient(45deg, #ff6b93, #ff8e53)';
-            this.style.color = 'white';
-            this.style.transform = 'scale(1.05)';
-        });
-        
-        placeholder.addEventListener('mouseleave', function() {
-            this.style.background = 'rgba(255,255,255,0.9)';
-            this.style.color = '#ff6b93';
-            this.style.transform = 'scale(1)';
-        });
-    });
-}
