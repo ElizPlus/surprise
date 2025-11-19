@@ -90,6 +90,13 @@ class MemoryMap {
                 description: "The day before...",
                 photo: "images/photos/we.jpg",
                 hasPhoto: true
+            },
+            {
+                coords: [54.990044, 82.89132],
+                title: "Apartment",
+                description: "The first time in your new home",
+                photo: "images/photos/app.jpg",
+                hasPhoto: true
             }
         ];
 
